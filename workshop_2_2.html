@@ -1,0 +1,66 @@
+<!doctype html>
+<html>
+<head>
+	<style>
+
+		body { 
+			cursor: pointer; 
+		}
+
+		.type {
+			font-family: sans-serif;
+			font-size: 50px;
+			float: left;
+			margin: 10px;
+		}
+
+		.clicked {
+			font-family: serif;
+			font-size: 100px;
+			color: red;
+			float: left;
+			margin: 10px;
+		}
+
+		.hovered{
+			font-family: sans-serif;
+			font-size: 200px;
+			color: yellow;
+			float: left;
+		}
+
+		</style>
+	<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+	<script>
+
+	$(function() {
+
+	for(var i = 0; i < 300; i++) {
+	$("body").append("<div class='type'>A</div>");
+};
+
+	$(".type").click(function() {
+			// click on
+			$(this).toggleClass("clicked");
+		});
+
+	$(".type").hover(function() {
+			// hover on
+			$(this).toggleClass("hovered");
+		});
+
+});
+
+
+
+	</script>
+</head>
+<body>
+
+	<div class="type">Y</div>
+	<div class="type">A</div>
+	<div class="type">Y</div>
+
+
+</body>
+</html>
