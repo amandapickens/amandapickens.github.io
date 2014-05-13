@@ -1,0 +1,252 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans:600italic,600' rel='stylesheet' type='text/css'>
+<style>
+
+	.gradient{
+		position: absolute;
+		top: 0;
+		left: 0;
+		height:1300px;
+		width:100%;
+		z-index: -1;
+	  	background: -webkit-linear-gradient(white, red);
+	  	background: -moz-linear-gradient(white, red);
+	  	background: -ms-linear-gradient(white, red);
+	  	background: -o-linear-gradient(white, red);
+	  	background: linear-gradient(white, red);
+	}
+
+	.title {
+		font-family:'Open Sans', sans-serif;
+		color: white;	
+		font-size: 65pt;
+		line-height: 70pt;
+		width: 650pt;
+		text-align: left;
+		cursor: pointer;
+		position: absolute;			
+	}
+
+	#text1 {
+		top: 0px;
+		left: 0px;
+  	}
+
+  	#text2 {
+		top: 450px;
+		left: 30px;
+		text-transform:uppercase;
+		letter-spacing: 3px;
+  	}
+
+  	#text3 {
+		top: 950px;
+		left: 300px;
+  	}
+
+  	#text4 {
+		font-size: 23pt;
+		text-transform: uppercase;
+		letter-spacing: 3px;
+		top: 350px;
+		left: 10px;
+  	}
+
+  	#text5 {
+		font-size: 23pt;
+		text-transform: uppercase;
+		letter-spacing: 3px;
+		top: 700px;
+		left: 450px;
+  	}
+
+  	#text6 {
+		font-size: 11pt;
+		line-height: 15pt;
+		text-transform: uppercase;
+		letter-spacing: 2px;
+		top: 30px;
+		left: 700px;
+  	}
+
+  	a {
+  		text-decoration: none;
+  		color: white;
+  	}
+
+	a:hover {
+		color: red;
+	}  
+  
+	.dragme { 
+	    float: left;
+	   	position: absolute;
+	   	cursor: pointer; 
+	    }
+
+	.photos {
+		display:block;
+    	margin: 150px auto;
+    	z-index: -1;
+    	top: 100px;
+	}
+
+	#icons {
+		position: fixed;
+		z-index: 100;
+		top: 10px;
+		left: 3px;
+
+	}
+
+	.printer {
+    	float: left;
+    	margin-right: 5px;
+    	margin-left: 5px;
+	}
+
+	.refresh {
+    	float: left;
+	}
+
+	@media print {
+		html,body{
+			height:1567px;
+		}
+		h1{
+			font-family: sans-serif;
+		}
+
+		.gradient{
+			height:100%;
+			width:100%;
+			background: -webkit-linear-gradient(white, red);
+	  		background: -moz-linear-gradient(white, red);
+	  		background: -ms-linear-gradient(white, red);
+	  		background: -o-linear-gradient(white, red);
+	  		background: linear-gradient(white, red);
+		}
+
+		.printer {
+			display: none;
+		}
+
+		.refresh {
+			display: none;
+		}	
+
+	}
+	
+
+</style>
+ 
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.0/jquery.min.js"></script>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.9/jquery-ui.min.js"></script>
+ 
+<script type="text/javascript">
+ 
+$( init );
+ 
+function init() {
+  $('.dragme').draggable();
+  
+  $(".dragme").each(function() {
+  	var $img = $(this);
+  	var width = $(window).width();
+  	var height = $(window).height();
+  	var rndTop = (Math.random()*height*.75)+(height*.125);
+  	var rndLeft = (Math.random()*width*.75)+(width*.125);
+
+
+
+  	$img.css("top", rndTop + "px");
+  	$img.css("left", rndLeft + "px");
+
+  });
+
+  $('.title').draggable();
+
+  $(".title").each(function() {
+  	var text = $(this);
+  	var width = $(window).width();
+  	var height = $(window).height();
+  	var rndTop = text.offset().top + (Math.random()*height*.1)+(height*.05);
+  	var rndLeft = text.offset().left + (Math.random()*width*.1)+(width*.05);
+
+  	text.css("top", rndTop + "px");
+  	text.css("left", rndLeft + "px");
+
+  });
+
+}
+
+$(document).ready(function() {
+ $('ul#tools').prepend('<li class="print"><a href="#print">Click me to print</a></li>');
+ $('ul#tools li.print a').click(function() {
+  window.print();
+  return false;
+ });
+}); 
+ 
+</script>
+ 
+</head>
+<body>
+	<div id="icons">
+		<a href="#" onclick="window.print(); return false;"><img src="images/printer_red.png" class="printer" alt="print" width="50px"></a>
+
+		<a href="javascript:location.reload(true)"><img src="images/refresh_red.png" class="refresh" alt="refresh" width="30px"></a>
+	</div>
+	<div class="gradient"></div>
+	<div>
+		<div class="title">
+			<img src="images/nathans_logo_white.png" alt="Nathan's" width="480px">
+		</div>
+		<div id="text2" class="title">Hot Dog<br>Eating Contest</div>
+		<div id="text3" class="title">@ Coney Island</div>
+		<div id="text4" class="title">July 4th 2014</div>
+		<div id="text5" class="title">10 Minutes of Pure Gluttony!</div>
+		<div id="text6" class="title">
+			<ul>
+				<li><a href="http://www.ifoce.com/contests.php?action=signup&eventID=590">4.26 Las Vegas, NV</a></li><br>
+				<li><a href="http://www.ifoce.com/contests.php?action=signup&eventID=591">5.03 Houston, TX</a></li><br>
+				<li><a href="http://www.ifoce.com/contests.php?action=signup&eventID=592">5.17 St. Louis, MO</a></li><br>
+				<li><a href="http://www.ifoce.com/contests.php?action=signup&eventID=593">5.24 Charlotte, NC</a></li><br>
+				<li><a href="http://www.ifoce.com/contests.php?action=signup&eventID=594">5.31 Bloomingdale, IL</a></li><br>
+				<li><a href="http://www.ifoce.com/contests.php?action=signup&eventID=595">6.01 St. Paul, MN</a></li><br>
+				<li><a href="http://www.ifoce.com/contests.php?action=signup&eventID=596">6.07 Long Pond, PA</a></li><br>
+				<li><a href="http://www.ifoce.com/contests.php?action=signup&eventID=597">6.07 Savannah, GA</a></li><br>
+				<li><a href="http://www.ifoce.com/contests.php?action=signup&eventID=598">6.15 Queens, NY</a></li><br>
+				<li><a href="http://www.ifoce.com/contests.php?action=signup&eventID=599">6.21 Boston, MA</a></li><br>
+				<li><a href="http://www.ifoce.com/contests.php?action=signup&eventID=601">6.22 Sonoma, CA</a></li><br>
+				<li><a href="http://www.ifoce.com/contests.php?action=signup&eventID=602">6.28 East Rutherford, NJ</a></li><br>
+				<li><a href="http://www.ifoce.com/contests.php?action=signup&eventID=603">6.29 Cleveland, OH</a></li>
+			</ul>
+	</div>
+
+
+	<div>
+		<img src="images/ketchup_left.png" class="dragme"/>
+		<img src="images/ketchup_right.png" class="dragme"/>
+		<img src="hotdog.png" class="dragme"/>
+		<img src="hotdog.png" class="dragme"/>
+		<img src="hotdog.png" class="dragme"/>
+		<img src="hotdog.png" class="dragme"/>
+		<img src="hotdog.png" class="dragme"/>
+		<img src="images/chicago_dog.png" class="dragme"/>
+		<img src="images/chicago_dog.png" class="dragme"/>
+		<img src="images/chili_dog.png" class="dragme"/>
+		<img src="images/chili_dog.png" class="dragme"/>
+		<img src="images/hotdog_mustard.png" class="dragme"/>
+		<img src="images/hotdog_mustard.png" class="dragme"/>
+		<img src="images/hotdog_mustard.png" class="dragme"/>
+	</div>
+
+	<div>
+		<img src="images/hotdog_750px.gif" class="photos" alt="Sonya Thomas" width="650px">
+	</div>
+ 
+</body>
+</html>

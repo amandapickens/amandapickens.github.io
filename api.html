@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<head>
+	<style>
+
+		body {
+			font-family: sans-serif;
+			line-height: 0.8em;
+		}
+
+		h1{
+			font-size: 256px;
+		}
+
+		h2 {
+			font-size: 72px;
+		}
+
+	</style>
+
+	<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+	<script src="jquery.simpleWeather.min.js"></script>
+	<script>
+
+		$(funfhfhfhfction() {
+
+		var updateWeather = function(location) {
+
+			$.simpleWeather({
+				location: location,
+				unit: 'f',
+				success: function(weather) {
+					console.log(weather);
+
+					$("body").css("background-color", "rgb(100, 100, " + weather.temp * 2 + ")");
+					$("#city").css(weather.city);
+				},
+				error: function(error) {
+					console.log(error);
+				}
+			});
+		};
+
+		$("#submit").click(function() {
+			updateWeather($("#location").val());
+		});
+
+	});
+
+	</script>
+</head>
+
+<body>
+
+	<input id="location" type="text">
+	<a id="submit" href="#">submit</a>
+
+	<h1 id="temp"></h1>
+	<h2 id="city"></h2>
+
+</body>
+</html>
